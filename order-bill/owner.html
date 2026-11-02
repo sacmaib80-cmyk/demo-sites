@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>หลังร้าน · ตั้งใจดี (เว็บตัวอย่าง)</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1a39d0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;700&family=Chonburi&family=Sriracha&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="owner.css">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+</head>
+<body class="ownerPage">
+<p class="demoStrip" id="demoStrip" hidden>
+  <span>เว็บตัวอย่าง นี่คือหน้าที่เจ้าของร้านเห็น</span>
+  <a href="./">กลับไปหน้าร้าน</a>
+</p>
+
+<section class="gate" id="gate" hidden>
+  <img src="logo.svg" alt="" width="72" height="72">
+  <h1>หลังร้าน</h1>
+  <form id="gateForm">
+    <label for="gateKey">รหัสเจ้าของร้าน</label>
+    <input id="gateKey" type="password" autocomplete="off" required>
+    <button type="submit" class="ownerBtn main">เข้าหลังร้าน</button>
+    <p class="formErr" id="gateErr" role="alert" hidden></p>
+  </form>
+</section>
+
+<div class="app" id="app" hidden>
+  <header class="bar">
+    <a class="brand" href="./" aria-label="ไปหน้าร้าน"><img src="logo.svg" alt="" width="44" height="44"><span class="brandName" id="shopName"></span></a>
+    <nav class="tabs" aria-label="หลังร้าน">
+      <button type="button" class="tab" data-tab="orders" aria-pressed="true">ออเดอร์</button>
+      <button type="button" class="tab" data-tab="products" aria-pressed="false">สินค้า</button>
+    </nav>
+    <button type="button" class="linkBtn logout" id="logout" hidden>ออกจากเครื่องนี้</button>
+  </header>
+
+  <main class="desk" id="tabOrders">
+    <section class="listCol">
+      <div class="sums" id="sums"></div>
+      <div class="filters" id="filters" role="group" aria-label="กรองออเดอร์"></div>
+      <div class="rows" id="orderRows"></div>
+    </section>
+    <section class="detailCol" id="orderDetail" aria-live="polite"></section>
+  </main>
+
+  <main class="desk" id="tabProducts" hidden>
+    <section class="listCol">
+      <div class="listHead">
+        <h2>สินค้า <span id="productCount"></span></h2>
+        <button type="button" class="ownerBtn main" id="newProduct">เพิ่มสินค้า</button>
+      </div>
+      <div class="rows" id="productRows"></div>
+    </section>
+    <section class="detailCol" id="productDetail"></section>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="config.js"></script>
+<script src="api.js"></script>
+<script src="owner.js"></script>
+</body>
+</html>

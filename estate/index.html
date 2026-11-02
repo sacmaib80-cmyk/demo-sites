@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ร่มเงา เรสซิเดนซ์ · บ้านหกหลัง ปากช่อง (โครงการสมมติ)</title>
+<meta name="description" content="เว็บตัวอย่างโครงการบ้านหรู เดินชมบ้าน 3D ได้ทุกห้อง โครงการ ราคา และบริษัทในเว็บนี้เป็นของสมมติ">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#16130f">
+<link rel="preload" href="vendor/fonts/cormorant-garamond-latin-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2316130f'/%3E%3Cpath d='M4 12h24M8 12v15M24 12v15' stroke='%23f1ece3' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top">
+  <nav class="navL" aria-label="หัวข้อในหน้า">
+    <a href="#inside">ภายในบ้าน</a>
+    <a href="#plan">แบบบ้าน</a>
+    <a href="#site">แปลง</a>
+    <a href="#facts">ข้อมูลโครงการ</a>
+  </nav>
+  <a class="mark" href="#" aria-label="ร่มเงา เรสซิเดนซ์ กลับขึ้นบนสุด"><span>ร่มเงา</span></a>
+  <a class="navCta" href="#visit">นัดชมบ้าน</a>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="stage" id="stage" role="img" aria-label="บ้านสองชั้น ชายคายื่นลึก ระเบียงยาวและสระน้ำด้านหน้า ท่ามกลางต้นไม้ใหญ่"></div>
+    <div class="scrim" aria-hidden="true"></div>
+    <div class="heroText">
+      <p class="kicker">ร่มเงา เรสซิเดนซ์ · ปากช่อง · 6 หลัง · ส่งมอบ ธ.ค. 2570</p>
+      <h1 id="heroTitle" aria-label="ร่มเงา">ROMNGAO</h1>
+      <p class="heroSub">บ้านหกหลังบนที่ดินหกไร่ เริ่ม 38.5 ล้านบาท</p>
+      <div class="heroAct">
+        <button type="button" class="btnMain" id="enterBtn" hidden>เดินเข้าไปในบ้าน</button>
+        <a class="btnLine" href="#visit">นัดชมบ้านจริง</a>
+      </div>
+    </div>
+    <div class="sun">
+      <p class="sunRead" aria-live="polite"><b id="clock">16:30</b> <span id="sunLine"></span></p>
+      <label class="rule">
+        <span class="sr">เวลาของวัน</span>
+        <input id="time" type="range" min="360" max="1320" step="5" value="990">
+        <span class="hours" aria-hidden="true"><i style="--h:0">06</i><i style="--h:3">09</i><i style="--h:6">12</i><i style="--h:9">15</i><i style="--h:12">18</i><i style="--h:16">22</i></span>
+      </label>
+      <p class="fiction">โครงการสมมติ งานตัวอย่าง · ภาพจากโมเดล 3D ในเว็บนี้ ไม่ใช่ภาพถ่าย</p>
+    </div>
+  </section>
+
+  <section class="intro" aria-labelledby="introTitle">
+    <div class="introText">
+      <p class="label">ทำไมชื่อร่มเงา</p>
+      <h2 id="introTitle">
+        <span class="introA">ชายคายื่นออกไป</span>
+        <span class="introN">3.4<small>เมตร</small></span>
+        <span class="introB">เที่ยงวัน แดดเข้าได้แค่ขอบระเบียง</span>
+      </h2>
+    </div>
+    <figure class="introFig">
+      <svg id="secSvg" role="img" aria-label="ภาพตัดบ้านสองชั้น แสดงเส้นแดดลอดใต้ชายคาตามเวลาที่เลือก"></svg>
+      <figcaption>
+        <p class="secRead" id="secRead" aria-live="polite"></p>
+        <label class="rule secRule">
+          <span class="sr">เวลาในภาพตัดบ้าน</span>
+          <input id="secTime" type="range" min="360" max="1320" step="5" value="990">
+          <span class="hours" aria-hidden="true"><i style="--h:0">06</i><i style="--h:3">09</i><i style="--h:6">12</i><i style="--h:9">15</i><i style="--h:12">18</i><i style="--h:16">22</i></span>
+        </label>
+        <p class="secFoot">ลากเวลาดูได้ เส้นแดดคำนวณจากความสูงและความยื่นจริงของบ้านหลังนี้ ตามทางเดินแดดแบบจำลอง ไม่ใช่ผลวัดจากที่ดินจริง</p>
+      </figcaption>
+    </figure>
+    <dl class="specs" aria-label="ข้อมูลหลักของบ้าน">
+      <div><dt>พื้นที่ใช้สอยรวมระเบียง</dt><dd id="totalArea">407.7<small>ตร.ม.</small></dd></div>
+      <div><dt>ในแต่ละหลัง</dt><dd class="roomsN">4<small>ห้องนอน</small> <br class="narrowBr">3<small>ห้องน้ำ</small></dd></div>
+      <div><dt>บนที่ดิน 6 ไร่</dt><dd>6<small>หลัง</small></dd></div>
+      <div><dt>ราคาตามแปลง</dt><dd>38.5–44<small>ล้านบาท</small></dd></div>
+    </dl>
+  </section>
+
+  <section class="inside" id="inside" aria-labelledby="insideTitle">
+    <header class="secHead">
+      <p class="label">ภายในบ้าน</p>
+      <h2 id="insideTitle">เดินดูได้ทุกห้อง ไม่ต้องรอนัด</h2>
+    </header>
+    <figure class="shot shotA">
+      <button type="button" class="shotBtn" data-stop="1">
+        <img src="art/3d-living-1000.webp" srcset="art/3d-living-1000.webp 1000w, art/3d-living.webp 1800w" sizes="100vw" width="1800" height="1012" alt="ห้องนั่งเล่นตอนเย็น โซฟาตัวแอลสีครีม ชั้นหนังสือไม้วอลนัตเต็มผนัง" loading="lazy" decoding="async">
+      </button>
+      <figcaption><b>ห้องนั่งเล่น</b> 63 ตร.ม. ฝ้าสูง 3.2 เมตร เปิดบานเลื่อนออกระเบียงได้เกือบสุดผนัง <span class="go">เดินเข้าห้องนี้</span></figcaption>
+    </figure>
+    <div class="shotPair">
+      <figure class="shot shotB">
+        <button type="button" class="shotBtn" data-stop="5">
+          <img src="art/3d-master-1000.webp" srcset="art/3d-master-1000.webp 1000w" sizes="(min-width: 900px) 58vw, 100vw" width="1000" height="1250" alt="ห้องนอนใหญ่ เตียงผ้าลินินหันออกหาบานกระจกทั้งผนัง" loading="lazy" decoding="async">
+        </button>
+        <figcaption><b>ห้องนอนใหญ่</b> 56 ตร.ม. ห้องแต่งตัวและห้องน้ำในห้อง <span class="go">เดินเข้าห้องนี้</span></figcaption>
+      </figure>
+      <figure class="shot shotC">
+        <button type="button" class="shotBtn" data-stop="0">
+          <img src="art/3d-terrace-1000.webp" srcset="art/3d-terrace-1000.webp 1000w" sizes="(min-width: 900px) 34vw, 100vw" width="1000" height="1250" alt="ระเบียงใต้ชายคาไม้สัก มองออกไปเห็นสระน้ำและต้นไม้" loading="lazy" decoding="async">
+        </button>
+        <figcaption><b>ระเบียง</b> ยาว 24 เมตร ฝ้าไม้สัก <span class="go">เดินเข้าห้องนี้</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="plan" id="plan" aria-labelledby="planTitle">
+    <header class="secHead">
+      <p class="label">แบบบ้าน</p>
+      <h2 id="planTitle">กดห้องบนแปลน แล้วเดินไปดู</h2>
+      <div class="floors" role="group" aria-label="เลือกชั้น">
+        <button type="button" data-floor="1" aria-pressed="true">ชั้น 1</button>
+        <button type="button" data-floor="2" aria-pressed="false">ชั้น 2</button>
+      </div>
+    </header>
+    <div class="planBody">
+      <div class="sheet" tabindex="0" role="region" aria-label="แปลนบ้าน"><svg id="planSvg" viewBox="0 0 1000 620" role="group" aria-label="แปลนบ้าน เลือกห้องได้"></svg></div>
+      <p class="dragHint">ลากแปลนไปซ้ายขวาเพื่อดูครบทุกห้อง</p>
+      <ul class="rooms" id="rooms"></ul>
+    </div>
+  </section>
+
+  <section class="site" id="site" aria-labelledby="siteTitle">
+    <header class="secHead">
+      <p class="label">ผังโครงการ</p>
+      <h2 id="siteTitle">แปลงที่ยังเลือกได้</h2>
+    </header>
+    <div class="siteBody">
+      <div class="sheet" tabindex="0" role="region" aria-label="ผังโครงการ"><svg id="siteSvg" viewBox="0 0 1000 640" role="group" aria-label="ผังโครงการ เลือกแปลงได้"></svg></div>
+      <p class="dragHint">ลากผังไปซ้ายขวาเพื่อดูครบทุกแปลง</p>
+      <div class="plotCard" id="plotCard" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="facts" id="facts" aria-labelledby="factsTitle">
+    <header class="secHead">
+      <p class="label">ก่อนตัดสินใจ</p>
+      <h2 id="factsTitle">ของที่ผู้ซื้อควรเห็นก่อนจ่ายเงินจอง</h2>
+      <p class="secNote">ทุกชื่อและเลขในส่วนนี้เป็นของสมมติ ใส่ไว้เพื่อแสดงว่าเว็บจริงควรเปิดเผยอะไร</p>
+    </header>
+    <dl class="factList">
+      <div><dt>ผู้พัฒนา</dt><dd>บริษัท ร่มเงา เรสซิเดนซ์ จำกัด (สมมติ)<small>งบการเงินย้อนหลัง 3 ปี ขอดูได้ที่สำนักงานขาย</small></dd></div>
+      <div><dt>ออกแบบสถาปัตยกรรม</dt><dd>สตูดิโอเรือนแสง (สมมติ)<small>สถาปนิกผู้ลงนามมีใบอนุญาตควบคุม เลขที่ 00000</small></dd></div>
+      <div><dt>ออกแบบภายใน</dt><dd>สตูดิโอไม้ขาว (สมมติ)<small>ส่งมอบพร้อมเฟอร์นิเจอร์บิวท์อินตามภาพ ส่วนลอยตัวแยกรายการ</small></dd></div>
+      <div><dt>ที่ดินและกรรมสิทธิ์</dt><dd>แยกโฉนดรายแปลง ปลอดภาระจำนอง<small>โอนกรรมสิทธิ์ที่สำนักงานที่ดินเมื่อบ้านแล้วเสร็จ</small></dd></div>
+      <div><dt>ใบอนุญาตก่อสร้าง</dt><dd>เลขที่ 000/2569 ตรงกับแบบที่แสดงในเว็บนี้<small>ขอดูเอกสารตัวจริงได้ก่อนวางเงินจอง</small></dd></div>
+      <div><dt>การรับประกัน</dt><dd>โครงสร้าง 5 ปี งานระบบและงานตกแต่ง 1 ปี<small>เขียนไว้ในสัญญา พร้อมรายการตรวจรับงาน</small></dd></div>
+      <div><dt>กำหนดส่งมอบ</dt><dd>ธันวาคม 2570 บ้านตัวอย่างเสร็จแล้ว<small>ความคืบหน้าส่งเป็นภาพถ่ายรายเดือนให้ผู้จอง</small></dd></div>
+      <div><dt>ค่าส่วนกลาง</dt><dd>ประมาณ 18,000 บาท ต่อเดือน<small>ดูแลถนน ไฟทาง สวนกลาง รักษาความปลอดภัย</small></dd></div>
+    </dl>
+  </section>
+
+  <section class="visit" id="visit" aria-labelledby="visitTitle">
+    <div class="visitHead">
+      <h2 id="visitTitle">นัดชมบ้านตัวอย่าง</h2>
+      <p class="visitSub">เปิดให้ชมวันละสองรอบ เพื่อให้เห็นแสงจริงบนระเบียง สำนักงานขายอยู่ในโครงการ ปากช่อง (สมมติ)</p>
+    </div>
+    <form id="visitForm" novalidate>
+      <label class="line"><span>ชื่อ</span><input name="name" autocomplete="name" maxlength="80"></label>
+      <label class="line"><span>โทร</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="14"></label>
+      <fieldset class="slots">
+        <legend>รอบที่อยากมา</legend>
+        <label><input type="radio" name="slot" value="รอบเช้า 09:30" checked><span>รอบเช้า 09:30<small>แสงเช้าผ่านระแนงเข้าห้องนั่งเล่น</small></span></label>
+        <label><input type="radio" name="slot" value="รอบบ่าย 15:30"><span>รอบบ่าย 15:30<small>นั่งในเงาบนระเบียง</small></span></label>
+      </fieldset>
+      <p class="picked" id="pickedPlot"></p>
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="formErr" id="formErr" role="alert" hidden></p>
+      <button type="submit" class="btnMain" id="visitBtn">ขอนัดชมบ้าน</button>
+      <p class="formNote">เว็บตัวอย่าง ข้อมูลที่กรอกไม่ถูกส่งไปไหน</p>
+    </form>
+    <div class="done" id="visitDone" role="status" hidden></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p class="footMark">ROMNGAO</p>
+  <p>ร่มเงา เรสซิเดนซ์เป็นโครงการสมมติ ราคา แบบบ้าน บริษัท และที่ตั้งเป็นตัวอย่างทั้งหมด</p>
+  <p>ภาพบ้านทุกภาพเรนเดอร์จากโมเดล 3D ในเว็บนี้ ไม่ใช่ภาพถ่าย</p>
+</footer>
+
+<!-- โหมดเดินในบ้าน -->
+<div class="walkFade" id="walkFade" aria-hidden="true"></div>
+<div class="walkUI" id="walkUI" role="dialog" aria-label="เดินชมในบ้าน" tabindex="-1" hidden>
+  <div class="wTop">
+    <div class="wWhere"><span id="wFloor">ชั้น 1</span><strong id="wRoom" aria-live="polite">ระเบียง</strong></div>
+    <button type="button" class="wExit" id="wExit">ออกจากบ้าน</button>
+  </div>
+  <p class="wHint" id="wHint"></p>
+  <p class="wNote" id="wNote" role="status"></p>
+  <div class="wBottom">
+    <nav class="wStops" id="wStops" aria-label="ไปยังห้อง"></nav>
+    <div class="wSide">
+      <button type="button" class="wFloorBtn" id="wFloorBtn">ขึ้นชั้นบน</button>
+      <label class="wTime"><span class="wClock" id="wClock">16:30</span><span class="sr">เวลาของวัน</span><input id="wTime" type="range" min="360" max="1320" step="5" value="990"></label>
+      <svg id="wMap" class="wMap" viewBox="-20 -20 880 420" role="img" aria-label="แผนผังชั้นนี้ จุดคือที่ที่ยืนอยู่"></svg>
+    </div>
+  </div>
+  <div class="wReticle" id="wReticle" aria-hidden="true"></div>
+</div>
+
+<script src="house-data.js"></script>
+<script src="estate.js"></script>
+</body>
+</html>

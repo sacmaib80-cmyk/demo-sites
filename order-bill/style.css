@@ -1,0 +1,289 @@
+/* ตั้งใจดี · มองแผงตลาดจากด้านบน
+   พื้น = ผ้าใบฟ้า · สินค้า = ถาดเคลือบกลมเห็นเนื้อของจริง · ป้ายราคา = ดาวเหลืองเขียนมือ · บิล = กระดาษเหลืองพิมพ์แดงเขียนปากกาน้ำเงิน
+   สเกลตัวอักษร 12/14/16/20/28/40/64 · ระยะ 4/8/12/16/24/32/48/64 */
+[hidden] { display: none !important; }
+:root {
+  --table: #1a39d0;
+  --table-deep: #122a9f;
+  --white: #fff;
+  --bill: #ffec6e;
+  --bill-edge: #e9d24c;
+  --print: #c8162b;
+  --pen: #1a39d0;
+  --ink: #12131a;
+  --head: 'Anuphan', 'Noto Sans Thai', system-ui, sans-serif;
+  --mark: 'Chonburi', 'Anuphan', serif;
+  --hand: 'Sriracha', 'Anuphan', cursive;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  /* รอยปากกาเมจิกวงรอบตัวเลือก 2 แบบ ไม่ให้ทุกวงเหมือนกันเป๊ะ */
+  --loop-y1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M68 4C42 0 11 4 5 17c-4 13 25 21 51 19 26-2 43-9 39-22-3-9-29-12-55-9' fill='none' stroke='%23ffec6e' stroke-width='2.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --loop-y2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M30 6C56 0 90 3 95 16c4 13-22 20-48 20C21 36 3 29 5 16 7 7 33 2 63 5' fill='none' stroke='%23ffec6e' stroke-width='2.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --loop-b1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M68 4C42 0 11 4 5 17c-4 13 25 21 51 19 26-2 43-9 39-22-3-9-29-12-55-9' fill='none' stroke='%231a39d0' stroke-width='2.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --loop-b2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M30 6C56 0 90 3 95 16c4 13-22 20-48 20C21 36 3 29 5 16 7 7 33 2 63 5' fill='none' stroke='%231a39d0' stroke-width='2.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  /* ขอบเทปกาวกระดาษฉีกด้วยมือ */
+  --tape: polygon(3px 0, calc(100% - 2px) 0, 100% 14%, calc(100% - 3px) 28%, 100% 42%, calc(100% - 3px) 57%, 100% 71%, calc(100% - 3px) 85%, calc(100% - 1px) 100%, 2px 100%, 0 86%, 3px 72%, 0 58%, 3px 43%, 0 29%, 3px 15%);
+  /* ขอบหมึกตรายาง: ไม่เรียบ แต่ไม่ขาด */
+  --ink-edge: polygon(0 3px, 8% 0, 23% 2px, 41% 0, 58% 1px, 77% 0, 93% 2px, 100% 0, calc(100% - 1px) 30%, 100% 62%, calc(100% - 2px) 100%, 86% calc(100% - 2px), 67% 100%, 49% calc(100% - 1px), 31% 100%, 12% calc(100% - 2px), 1px 100%, 0 64%, 2px 34%);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--table); color: var(--white); font: 400 16px/1.5 var(--head); -webkit-font-smoothing: antialiased; }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+img { display: block; }
+h1, h2, h3, p, ul, ol { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
+.sheet :focus-visible, .after :focus-visible, .credits :focus-visible, .billBar:focus-visible { outline-color: var(--ink); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.linkBtn { background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
+.iconBtn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; line-height: 1; background: none; border: 0; }
+
+.demoStrip { display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: center; padding: 8px 16px; margin: 0; background: var(--ink); color: var(--white); font-size: 14px; }
+.demoStrip a, .demoStrip .linkBtn { color: var(--bill); }
+
+/* ---------- โครงหน้า ---------- */
+.page { display: grid; grid-template-columns: minmax(0, 1fr); }
+.stall { min-width: 0; padding: 16px 16px calc(96px + var(--safe-b)); }
+.top { display: flex; align-items: center; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 8px; text-decoration: none; flex: none; }
+.brandName { font: 400 28px/1 var(--mark); padding-top: 6px; }
+.search { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 4px; border-bottom: 2px solid rgba(255, 255, 255, .6); transition: border-color .15s; }
+.search:focus-within { border-bottom-color: var(--bill); }
+.search input { flex: 1; min-width: 0; height: 100%; background: none; border: 0; outline: 0; font: 400 20px/1 var(--hand); }
+.search input::placeholder { color: inherit; opacity: .8; }
+.search input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+.hero { grid-column: 1 / -1; padding: 24px 0 0; min-width: 0; }
+.hero h1 { font: 700 40px/1.14 var(--head); letter-spacing: -.012em; }
+.heroSub { margin-top: 12px; font-size: 16px; max-width: 34em; }
+.facts { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 4px 24px; font: 400 20px/1.4 var(--hand); color: var(--bill); }
+
+.cats { display: flex; gap: 4px 8px; overflow-x: auto; margin: 16px -16px 0; padding: 4px 16px; scrollbar-width: none; }
+.cats::-webkit-scrollbar { display: none; }
+.cat { position: relative; flex: none; min-height: 44px; padding: 0 12px; background: none; border: 0; font-weight: 500; font-size: 16px; white-space: nowrap; }
+.cat[aria-pressed="true"] { font-weight: 700; }
+.cat[aria-pressed="true"]::after, .size[aria-checked="true"]::after { content: ''; position: absolute; inset: 1px -2px; background: var(--loop-y1) center / 100% 100% no-repeat; pointer-events: none; animation: circle .3s ease-out both; }
+.cat:nth-child(2n)[aria-pressed="true"]::after, .size:nth-child(2n)[aria-checked="true"]::after { background-image: var(--loop-y2); }
+@keyframes circle { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.stale { font-size: 14px; padding-top: 12px; }
+
+/* ---------- ถาดสินค้า ---------- */
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+.tray { position: relative; min-width: 0; }
+/* ถาดเรียงเหลื่อมกันเหมือนวางบนแผงจริง · ลูกตัวแรกของตารางคือหัวเรื่อง */
+.tray:nth-child(2n+3) { margin-top: 40px; }
+.dishWrap { position: relative; }
+.dish { position: relative; display: block; width: 100%; aspect-ratio: 1; padding: 0; border: 0; border-radius: 50%; overflow: hidden; background: var(--white); box-shadow: 0 2px 0 var(--table-deep), 0 10px 18px rgba(8, 20, 90, .38); }
+.dish[disabled] { cursor: default; }
+.dish img { position: absolute; inset: 5px; width: calc(100% - 10px); height: calc(100% - 10px); border-radius: 50%; object-fit: cover; transform: rotate(var(--r, 0deg)); }
+.dish::after { content: ''; position: absolute; inset: 5px; border-radius: 50%; box-shadow: inset 0 3px 8px rgba(0, 0, 0, .32); pointer-events: none; }
+.tag { position: absolute; top: -4px; left: -4px; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 72px; height: 72px; color: var(--ink); background: var(--bill); text-align: center; transform: rotate(var(--t, -8deg)); pointer-events: none;
+  clip-path: polygon(50% 0, 60% 13%, 75% 7%, 79% 21%, 93% 25%, 88% 39%, 100% 50%, 88% 61%, 93% 75%, 79% 79%, 75% 93%, 60% 87%, 50% 100%, 40% 87%, 25% 93%, 21% 79%, 7% 75%, 12% 61%, 0 50%, 12% 39%, 7% 25%, 21% 21%, 25% 7%, 40% 13%); }
+.tag b { font: 400 20px/1 var(--hand); }
+.tag b.long { font-size: 16px; }
+.tag small { display: block; font: 500 12px/1 var(--head); margin-top: 1px; }
+.tray:nth-child(3n) .tag { left: auto; right: -4px; }
+.trayName { margin-top: 12px; font: 700 16px/1.3 var(--head); }
+.trayDesc { margin-top: 2px; font-size: 14px; line-height: 1.4; }
+.sizes { display: flex; flex-wrap: wrap; gap: 0 4px; margin: 4px 0 0 -10px; }
+.size { position: relative; min-height: 44px; padding: 0 10px; background: none; border: 0; font-size: 14px; font-weight: 500; white-space: nowrap; }
+.size[aria-checked="true"] { font-weight: 700; }
+.buy { position: absolute; right: -4px; bottom: 6px; z-index: 2; filter: drop-shadow(0 2px 3px rgba(8, 20, 90, .5)); transform: rotate(-3deg); }
+.add { display: flex; align-items: center; justify-content: center; min-width: 76px; height: 44px; padding: 0 14px; border: 0; background: #fffdf4; color: var(--ink); font: 400 20px/1 var(--hand); clip-path: var(--tape); }
+.add:focus-visible { background: var(--ink); color: var(--white); }
+.add:active { background: var(--bill); }
+.stepper { display: flex; align-items: center; height: 44px; padding: 0 2px; background: var(--bill); color: var(--ink); clip-path: var(--tape); }
+.stepper .iconBtn { width: 38px; height: 44px; }
+.stepper .iconBtn:focus-visible { outline-offset: -4px; }
+.stepper b { min-width: 24px; text-align: center; font: 400 22px/1 var(--hand); color: var(--pen); }
+.tray.out .dish img { filter: grayscale(1) contrast(.9); opacity: .55; }
+.tray.out .tag { background: var(--white); }
+.flyer { position: fixed; z-index: 60; border-radius: 50%; object-fit: cover; pointer-events: none; box-shadow: 0 0 0 3px var(--white); }
+
+.none { padding: 48px 0; font-size: 20px; }
+.none .linkBtn { display: block; margin-top: 8px; min-height: 44px; font-size: 16px; color: var(--bill); }
+.grid.loading .dish { background: rgba(255, 255, 255, .14); box-shadow: none; }
+.skel { display: block; height: 16px; margin-top: 16px; width: 60%; border-radius: 4px; background: rgba(255, 255, 255, .14); }
+
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-top: 64px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, .35); font-size: 14px; }
+.foot strong { font: 400 20px/1.4 var(--mark); }
+.footLinks .linkBtn { min-height: 44px; }
+
+/* ---------- บิล ---------- */
+.billSide { position: fixed; inset: 0; z-index: 40; background: var(--table-deep); transform: translateY(102%); visibility: hidden; transition: transform .28s cubic-bezier(.2, .8, .2, 1), visibility 0s .28s; display: flex; flex-direction: column; }
+body.billOpen { overflow: hidden; }
+body.billOpen .billSide { transform: none; visibility: visible; transition: transform .28s cubic-bezier(.2, .8, .2, 1), visibility 0s; }
+.billClose { align-self: center; flex: none; color: var(--white); width: 64px; height: 44px; }
+.billScroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 12px calc(24px + var(--safe-b)); -webkit-overflow-scrolling: touch; }
+
+.pad { position: relative; }
+/* ปึกกระดาษที่ซ้อนอยู่ข้างใต้ */
+.pad::before, .pad::after { content: ''; position: absolute; left: 3px; right: 3px; bottom: -4px; height: 40px; background: var(--bill-edge); }
+.pad::after { left: 6px; right: 6px; bottom: -8px; background: #d9c23f; z-index: -1; }
+.pad::before { z-index: 0; }
+.sheet { position: relative; z-index: 1; padding: 20px 16px 16px; background: var(--bill); color: var(--ink);
+  /* รอยปรุฉีกด้านบนของบิล */
+  -webkit-mask: radial-gradient(circle 4px at 8px 0, transparent 98%, #000) -8px 0 / 16px 100% repeat-x;
+  mask: radial-gradient(circle 4px at 8px 0, transparent 98%, #000) -8px 0 / 16px 100% repeat-x; }
+.billHead { display: grid; grid-template-columns: auto 1fr auto; gap: 0 8px; align-items: center; padding-bottom: 8px; border-bottom: 2px solid var(--print); color: var(--print); }
+.billHead img { width: 40px; height: 40px; }
+.billShop { font: 400 20px/1.1 var(--mark); padding-top: 4px; }
+.billKind { font-size: 12px; font-weight: 500; }
+.billNo { text-align: right; font-size: 12px; font-weight: 500; line-height: 1.3; }
+.billNo b { display: block; font: 700 20px/1 var(--head); letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+.printed { color: var(--print); font-size: 12px; font-weight: 500; }
+.hand { color: var(--pen); font-family: var(--hand); font-size: 18px; line-height: 1.3; }
+.billDate { display: flex; justify-content: flex-end; gap: 8px; align-items: baseline; padding-top: 4px; }
+
+.lines { width: 100%; margin-top: 4px; }
+.lineHead, .line { display: grid; grid-template-columns: minmax(0, 1fr) 76px; align-items: center; column-gap: 8px; }
+.lineHead { padding: 4px 0; border-bottom: 1px solid var(--print); }
+.lineHead span:last-child { text-align: right; }
+.line { min-height: 44px; padding: 4px 0; border-bottom: 1px solid rgba(200, 22, 43, .45); }
+.line.blank { min-height: 36px; }
+.lineName { min-width: 0; }
+.lineSum { text-align: right; font-variant-numeric: tabular-nums; }
+.lineMain { display: block; }
+.lineCtl { display: flex; align-items: center; gap: 2px; margin-top: 2px; color: var(--ink); }
+.lineCtl .iconBtn { width: 36px; height: 36px; border-radius: 50%; color: var(--pen); }
+.lineCtl .iconBtn:first-child { margin-left: -8px; }
+.lineCtl .hand { min-width: 28px; text-align: center; }
+.lineCtl .unit { color: var(--print); font-size: 12px; font-weight: 500; }
+.line.new .hand { animation: write .5s ease-out both; }
+@keyframes write { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 -4px 0 0); } }
+.emptyHint { padding: 8px 0 0; }
+
+.totals { padding-top: 8px; }
+.totalRow { display: flex; justify-content: space-between; align-items: baseline; min-height: 28px; }
+.totalRow.grand { margin-top: 4px; padding-top: 8px; border-top: 2px solid var(--print); }
+.totalRow.grand .hand { font-size: 28px; line-height: 1.1; }
+.nudge { margin-top: 4px; font-size: 14px; color: var(--ink); }
+
+.go { display: block; width: 100%; min-height: 60px; margin-top: 16px; border: 0; background: var(--print); color: var(--white); font-weight: 700; font-size: 20px; clip-path: var(--ink-edge); transition: transform .08s; }
+.go:active { transform: translateY(2px) scale(.99); }
+.go:focus-visible { background: var(--ink); text-decoration: underline; }
+.go[disabled] { opacity: .55; cursor: default; }
+.goNote { margin-top: 8px; font-size: 14px; text-align: center; }
+.billErr { margin-top: 12px; padding: 8px 12px; background: var(--print); color: var(--white); font-size: 14px; font-weight: 700; }
+
+/* ช่องกรอกบนบิล: เขียนลงบนเส้นเหมือนบิลจริง */
+.form { margin-top: 12px; display: grid; gap: 4px; }
+.field { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: baseline; column-gap: 4px; border-bottom: 1px solid var(--print); min-height: 48px; }
+.field > span { color: var(--print); font-size: 14px; font-weight: 500; padding-top: 12px; }
+.field > span.hand { color: var(--pen); font: 400 18px/1.3 var(--hand); padding: 8px 0 4px; min-width: 0; overflow-wrap: anywhere; }
+.field input, .field textarea { width: 100%; min-height: 44px; padding: 8px 0 4px; background: none; border: 0; outline: 0; color: var(--pen); font: 400 18px/1.3 var(--hand); resize: none; }
+.field input::placeholder, .field textarea::placeholder { color: rgba(26, 57, 208, .5); }
+.field:focus-within { border-bottom: 2px solid var(--pen); }
+.field.bad { border-bottom: 2px solid var(--print); background: rgba(200, 22, 43, .08); }
+.fieldErr { grid-column: 2; color: var(--print); font-size: 12px; font-weight: 700; padding-bottom: 4px; }
+.pick { display: grid; gap: 0; margin-top: 8px; }
+.pickTitle { color: var(--print); font-size: 14px; font-weight: 500; }
+.pickRow { display: flex; flex-wrap: wrap; gap: 0 16px; }
+.tick { position: relative; display: flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; font-weight: 500; }
+.tick input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.box { flex: none; width: 22px; height: 22px; border: 2px solid var(--print); background: rgba(255, 255, 255, .5); }
+.box svg { display: block; width: 28px; height: 28px; margin: -8px 0 0 -2px; opacity: 0; color: var(--pen); }
+.tick input:checked + .box svg { opacity: 1; }
+.tick input:focus-visible + .box { outline: 3px solid var(--ink); outline-offset: 2px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.backLink { display: block; margin: 8px auto 0; min-height: 44px; font-size: 14px; }
+
+/* ตรายาง */
+.stamp { position: absolute; left: 76px; bottom: 12px; z-index: 3; padding: 4px 12px; border: 3px solid var(--print); border-radius: 6px; color: var(--print); font: 700 20px/1.3 var(--head); transform: rotate(-9deg); opacity: .86; background: rgba(255, 236, 110, .25); pointer-events: none; }
+.stall.enter .tray { animation: place .46s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i, 0) * 45ms); }
+@keyframes place { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: none; } }
+.stamp.hit { animation: stamp .34s cubic-bezier(.2, .9, .3, 1.1) both; }
+@keyframes stamp { 0% { transform: scale(1.9) rotate(-16deg); opacity: 0; } 70% { transform: scale(.96) rotate(-8deg); opacity: 1; } 100% { transform: scale(1) rotate(-9deg); opacity: .86; } }
+
+/* ใบแนบหลังออกบิล */
+.after { margin-top: 24px; padding: 16px; background: var(--white); color: var(--ink); }
+.after h2 { font: 700 20px/1.3 var(--head); }
+/* สถานะบิล: หนึ่งช่องต่อหนึ่งขั้น ช่องที่ผ่านแล้วทึบ */
+.steps { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 4px; margin-top: 12px; font-size: 14px; line-height: 1.3; }
+.steps li { padding-top: 8px; border-top: 4px solid #dcdde6; color: #5a5c68; }
+.steps li.past { border-top-color: var(--ink); }
+.steps li.on { border-top-color: var(--pen); color: var(--ink); font-weight: 700; }
+.qrBox { display: grid; gap: 8px; justify-items: center; margin-top: 16px; padding: 16px; border: 2px solid var(--ink); }
+.qrBox canvas, .qrBox img { width: min(220px, 70vw); height: auto; image-rendering: pixelated; }
+.qrAmount { font: 700 28px/1.2 var(--head); font-variant-numeric: tabular-nums; }
+.qrName { font-size: 14px; }
+.demoWarn { color: var(--print); font-weight: 700; font-size: 14px; text-align: center; }
+.actions { display: grid; margin-top: 16px; }
+.act { position: relative; display: flex; align-items: center; min-height: 56px; width: 100%; padding: 0; border: 0; border-top: 2px dashed #b4b6c4; background: none; color: inherit; font-weight: 700; font-size: 16px; text-align: left; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; cursor: pointer; }
+.act.main { justify-content: center; min-height: 60px; margin-bottom: 8px; border: 0; background: var(--print); color: var(--white); font-size: 20px; text-align: center; text-decoration: none; clip-path: var(--ink-edge); }
+.act.main:active { transform: translateY(2px) scale(.99); }
+.act input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.act:focus-within, .act:focus-visible { outline: 3px solid var(--table); outline-offset: -3px; }
+.afterNote { margin-top: 12px; font-size: 14px; }
+.afterNote.err { color: var(--print); font-weight: 700; }
+.linePreview { margin-top: 8px; padding: 12px; background: #eef0f6; font-size: 14px; white-space: pre-wrap; }
+.slipThumb { width: 96px; height: auto; margin-top: 8px; border: 2px solid var(--ink); }
+
+/* แถบบิลบนมือถือ */
+.billBar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; align-items: center; gap: 8px; width: 100%; min-height: calc(64px + var(--safe-b)); padding: 8px 16px var(--safe-b); border: 0; background: var(--bill); color: var(--ink); text-align: left;
+  -webkit-mask: radial-gradient(circle 4px at 8px 0, transparent 98%, #000) -8px 0 / 16px 100% repeat-x;
+  mask: radial-gradient(circle 4px at 8px 0, transparent 98%, #000) -8px 0 / 16px 100% repeat-x; }
+.barLabel { flex: 1; min-width: 0; font-weight: 500; font-size: 16px; }
+.barTotal { color: var(--pen); font: 400 28px/1 var(--hand); font-variant-numeric: tabular-nums; }
+.billBar.bump { animation: bump .3s ease-out; }
+@keyframes bump { 40% { transform: translateY(-5px); } }
+
+/* เครดิต */
+.credits { width: min(640px, calc(100vw - 32px)); max-height: 80vh; padding: 24px; border: 0; color: var(--ink); background: var(--white); }
+.credits::backdrop { background: rgba(8, 20, 90, .6); }
+.credits form { float: right; margin: -12px -12px 0 0; }
+.credits h2 { font: 700 20px/1.3 var(--head); }
+.credits ul { margin-top: 12px; font-size: 14px; }
+.credits li { padding: 8px 0; border-top: 1px solid #dde; overflow-wrap: anywhere; }
+
+/* ---------- จอกว้าง ---------- */
+@media (min-width: 720px) {
+  .stall { padding: 24px 32px calc(96px + var(--safe-b)); }
+  .hero { grid-column: span 2; padding-top: 32px; }
+  .hero h1 { font-size: 64px; line-height: 1.08; }
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px; margin-top: 8px; }
+  .tray:nth-child(2n+3) { margin-top: 0; }
+  .tray:nth-child(3n+4) { margin-top: 64px; }
+  .tag { width: 100px; height: 100px; }
+  .tag b { font-size: 28px; }
+  .tag b.long { font-size: 22px; }
+  .tag small { font-size: 14px; margin-top: 2px; }
+  .trayName { font-size: 20px; }
+  .add { min-width: 96px; height: 48px; font-size: 24px; }
+  .stepper { height: 48px; }
+  .stepper .iconBtn { width: 44px; height: 48px; }
+  .dish img { inset: 7px; width: calc(100% - 14px); height: calc(100% - 14px); }
+  .dish::after { inset: 7px; }
+  .cats { margin: 24px 0 0 -12px; padding: 0; flex-wrap: wrap; overflow: visible; }
+}
+@media (min-width: 1100px) {
+  .page { grid-template-columns: minmax(0, 1fr) 416px; align-items: start; }
+  .stall { padding: 24px 32px 48px 48px; }
+  .billSide { position: sticky; top: 0; inset: auto; height: 100vh; transform: none; visibility: visible; background: none; padding: 24px 24px 24px 8px; transition: none; }
+  body.billOpen { overflow: auto; }
+  .billClose, .billBar { display: none !important; }
+  .billScroll { padding: 0 8px 16px 0; scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .4) transparent; }
+  .sheet { transform-origin: top center; }
+  .dish { transition: box-shadow .18s; }
+  .dish img { transition: transform .35s cubic-bezier(.2, .8, .2, 1); }
+  .dish:hover img { transform: rotate(var(--r, 0deg)) scale(1.05); }
+  .dish:hover { box-shadow: 0 2px 0 var(--table-deep), 0 18px 28px rgba(8, 20, 90, .5); }
+  .add:hover { background: var(--white); }
+  .size:hover, .cat:hover { color: var(--bill); }
+  .stepper .iconBtn:hover { color: var(--table); }
+  .go:hover, .act.main:hover { background: var(--ink); }
+  .act:not(.main):hover { color: var(--table); }
+}
+@media (min-width: 1500px) {
+  .page { grid-template-columns: minmax(0, 1fr) 460px; }
+  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .tray:nth-child(3n+4) { margin-top: 0; }
+  .tray:nth-child(3), .tray:nth-child(2n+5) { margin-top: 64px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .line.new .hand, .stamp.hit, .billBar.bump, .stall.enter .tray, .cat[aria-pressed="true"]::after, .size[aria-checked="true"]::after { animation: none; }
+  .billSide, body.billOpen .billSide { transition: none; }
+  .dish img, .dish { transition: none; }
+}

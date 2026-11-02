@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ตั้งใจดี · ของแห้ง เครื่องเทศ สั่งออนไลน์ (เว็บตัวอย่าง)</title>
+<meta name="description" content="ตัวอย่างระบบรับออเดอร์ของร้านเล็ก เลือกของ ดูบิล จ่ายด้วยพร้อมเพย์ ร้านสมมติ ไม่มีการส่งของจริง">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1a39d0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;700&family=Chonburi&family=Sriracha&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+</head>
+<body>
+<p class="demoStrip" id="demoStrip" hidden>
+  <span>เว็บตัวอย่าง ร้านสมมติ ไม่ส่งของจริง</span>
+  <a href="owner.html">ดูฝั่งเจ้าของร้าน</a>
+  <button type="button" class="linkBtn" id="demoReset">ล้างข้อมูล</button>
+</p>
+
+<div class="page">
+  <main class="stall">
+    <header class="top">
+      <a class="brand" href="./" aria-label="ร้านตั้งใจดี หน้าแรก">
+        <img src="logo.svg" alt="" width="52" height="52">
+        <span class="brandName">ตั้งใจดี</span>
+      </a>
+      <label class="search">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="sr">ค้นหาของในร้าน</span>
+        <input id="q" type="search" placeholder="หาของในร้าน" autocomplete="off" enterkeyhint="search">
+      </label>
+    </header>
+
+    <section class="board" aria-label="สินค้าในร้าน">
+      <div class="grid" id="grid">
+        <div class="hero" id="hero">
+          <h1>ของแห้งชั่งจริง<br>สั่งแล้วได้บิล</h1>
+          <p class="heroSub">แตะถาดไหน ของนั้นลงบิล ดูยอดก่อนจ่าย แล้วส่งบิลเข้า LINE ร้านได้เลย</p>
+          <ul class="facts" id="facts"></ul>
+          <nav class="cats" id="cats" aria-label="หมวดสินค้า"></nav>
+          <p class="stale" id="stale" hidden></p>
+        </div>
+      </div>
+      <div class="none" id="none" hidden></div>
+    </section>
+
+    <footer class="foot">
+      <div>
+        <strong id="footName">ตั้งใจดี</strong>
+        <p id="footAddr"></p>
+      </div>
+      <div class="footLinks">
+        <button type="button" class="linkBtn" id="creditBtn">เครดิตภาพสินค้า</button>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="billSide" id="billSide" aria-label="บิลของคุณ">
+    <button type="button" class="billClose iconBtn" id="billClose" aria-label="ปิดบิล">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="billScroll" id="billScroll">
+      <div class="pad">
+        <div class="sheet" id="sheet"></div>
+      </div>
+      <div class="after" id="after" hidden></div>
+    </div>
+  </aside>
+</div>
+
+<button type="button" class="billBar" id="billBar" hidden>
+  <span class="barLabel" id="barLabel"></span>
+  <span class="barTotal" id="barTotal"></span>
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 15l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<dialog class="credits" id="credits">
+  <form method="dialog"><button class="iconBtn dark" aria-label="ปิด"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></form>
+  <h2>เครดิตภาพสินค้า</h2>
+  <p>ภาพจาก Wikimedia Commons ครอปและย่อขนาด ไม่ใช่สินค้าของร้านจริง</p>
+  <ul id="creditList"></ul>
+</dialog>
+
+<script src="config.js"></script>
+<script src="api.js"></script>
+<script src="promptpay.js"></script>
+<script src="bill-image.js"></script>
+<script src="store.js"></script>
+</body>
+</html>
