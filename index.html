@@ -8,44 +8,7 @@
 <meta name="theme-color" content="#16130f">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2316130f'/%3E%3Cpath d='M4 12h24M8 12v15M24 12v15' stroke='%23f1ece3' stroke-width='2' fill='none'/%3E%3C/svg%3E">
 <link rel="preload" href="estate/vendor/fonts/cormorant-garamond-latin-300.woff2" as="font" type="font/woff2" crossorigin>
-<style>
-@font-face { font-family: 'Cormorant Garamond'; font-weight: 300; font-display: swap; src: url(estate/vendor/fonts/cormorant-garamond-latin-300.woff2) format('woff2'); unicode-range: U+0000-00FF, U+2010-2027; }
-@font-face { font-family: 'Taviraj'; font-weight: 300; font-display: swap; src: url(estate/vendor/fonts/taviraj-thai-300.woff2) format('woff2'); unicode-range: U+0E01-0E5B, U+200C-200D, U+25CC; }
-@font-face { font-family: 'Taviraj'; font-weight: 300; font-display: swap; src: url(estate/vendor/fonts/taviraj-latin-300.woff2) format('woff2'); unicode-range: U+0000-00FF, U+2010-2027; }
-@font-face { font-family: 'Plex Thai'; font-weight: 400; font-display: swap; src: url(estate/vendor/fonts/ibm-plex-sans-thai-thai-400.woff2) format('woff2'); unicode-range: U+0E01-0E5B, U+200C-200D, U+25CC; }
-@font-face { font-family: 'Plex Thai'; font-weight: 400; font-display: swap; src: url(estate/vendor/fonts/ibm-plex-sans-thai-latin-400.woff2) format('woff2'); unicode-range: U+0000-00FF, U+2010-2027; }
-:root { --pale: #f4efe6; --dark: #16130f; }
-* { box-sizing: border-box; }
-html, body { margin: 0; }
-body { min-height: 100vh; min-height: 100svh; background: var(--dark); color: var(--pale); font: 400 15px/1.6 'Plex Thai', 'Noto Sans Thai', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-a { color: inherit; }
-main { display: grid; gap: 2px; min-height: 0; }
-.work { position: relative; display: flex; flex-direction: column; background: var(--dark); }
-.pic { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #2a2622; }
-.pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2, .7, .2, 1); }
-.main { position: absolute; inset: 0; z-index: 2; }
-.main:focus-visible { outline: 2px solid var(--pale); outline-offset: -8px; }
-.work:hover img { transform: scale(1.018); }
-.text { position: relative; padding: 18px 20px 22px; pointer-events: none; }
-.text a { position: relative; z-index: 3; pointer-events: auto; }
-h2 { margin: 0; font-weight: 300; }
-.latin { font: 300 clamp(40px, 11.5vw, 56px)/1.15 'Cormorant Garamond', serif; letter-spacing: .12em; }
-.thai { font: 300 clamp(34px, 9.5vw, 46px)/1.36 'Taviraj', serif; }
-.sub { margin: 4px 0 0; max-width: 34em; }
-.also { display: inline-block; min-height: 44px; line-height: 44px; }
-footer { padding: 14px 20px calc(14px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid rgba(244, 239, 230, .16); font-size: 13.5px; color: rgba(244, 239, 230, .82); }
-@media (min-width: 900px) {
-  html, body { height: 100%; }
-  body { display: grid; grid-template-rows: minmax(0, 1fr) auto; }
-  main { grid-template-columns: 1fr 1fr; }
-  .pic { aspect-ratio: auto; flex: 1 1 auto; min-height: 320px; }
-  .text { flex: 0 0 216px; padding: 24px 40px 26px; }
-  .latin { font-size: clamp(44px, 3.9vw, 76px); line-height: 1.24; }
-  .thai { font-size: clamp(38px, 3.3vw, 64px); line-height: 1.36; }
-  .sub { font-size: 16.5px; }
-  footer { padding: 16px 40px; }
-}
-@media (prefers-reduced-motion: reduce) { .pic img { transition: none; } }
+<style>@font-face{font-family:Cormorant Garamond;font-weight:300;font-display:swap;src:url(estate/vendor/fonts/cormorant-garamond-latin-300.woff2) format("woff2");unicode-range:U+0000-00FF,U+2010-2027}@font-face{font-family:Taviraj;font-weight:300;font-display:swap;src:url(estate/vendor/fonts/taviraj-thai-300.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}@font-face{font-family:Taviraj;font-weight:300;font-display:swap;src:url(estate/vendor/fonts/taviraj-latin-300.woff2) format("woff2");unicode-range:U+0000-00FF,U+2010-2027}@font-face{font-family:Plex Thai;font-weight:400;font-display:swap;src:url(estate/vendor/fonts/ibm-plex-sans-thai-thai-400.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}@font-face{font-family:Plex Thai;font-weight:400;font-display:swap;src:url(estate/vendor/fonts/ibm-plex-sans-thai-latin-400.woff2) format("woff2");unicode-range:U+0000-00FF,U+2010-2027}:root{--pale: #f4efe6;--dark: #16130f}*{box-sizing:border-box}html,body{margin:0}body{min-height:100vh;min-height:100svh;background:var(--dark);color:var(--pale);font:400 15px/1.6 Plex Thai,Noto Sans Thai,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}main{display:grid;gap:2px;min-height:0}.work{position:relative;display:flex;flex-direction:column;background:var(--dark)}.pic{position:relative;aspect-ratio:16 / 10;overflow:hidden;background:#2a2622}.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}.main{position:absolute;inset:0;z-index:2}.main:focus-visible{outline:2px solid var(--pale);outline-offset:-8px}.work:hover img{transform:scale(1.018)}.text{position:relative;padding:18px 20px 22px;pointer-events:none}.text a{position:relative;z-index:3;pointer-events:auto}h2{margin:0;font-weight:300}.latin{font:300 clamp(40px,11.5vw,56px)/1.15 "Cormorant Garamond",serif;letter-spacing:.12em}.thai{font:300 clamp(34px,9.5vw,46px)/1.36 "Taviraj",serif}.sub{margin:4px 0 0;max-width:34em}.also{display:inline-block;min-height:44px;line-height:44px}footer{padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(244,239,230,.16);font-size:13.5px;color:#f4efe6d1}@media(min-width:900px){html,body{height:100%}body{display:grid;grid-template-rows:minmax(0,1fr) auto}main{grid-template-columns:1fr 1fr}.pic{aspect-ratio:auto;flex:1 1 auto;min-height:320px}.text{flex:0 0 216px;padding:24px 40px 26px}.latin{font-size:clamp(44px,3.9vw,76px);line-height:1.24}.thai{font-size:clamp(38px,3.3vw,64px);line-height:1.36}.sub{font-size:16.5px}footer{padding:16px 40px}}@media(prefers-reduced-motion:reduce){.pic img{transition:none}}
 </style>
 </head>
 <body>
@@ -68,6 +31,6 @@ footer { padding: 14px 20px calc(14px + env(safe-area-inset-bottom, 0px)); borde
     </div>
   </article>
 </main>
-<footer>งานตัวอย่าง ร้าน โครงการ ราคา และบริษัทในเว็บเป็นของสมมติ ไม่มีการขายจริง ไม่มีข้อมูลถูกส่งออก · <a href="https://github.com/sacmaib80-cmyk/demo-sites">ซอร์สและเครดิต</a></footer>
+<footer>งานตัวอย่าง ร้าน โครงการ ราคา และบริษัทในเว็บเป็นของสมมติ ไม่มีการขายจริง ไม่มีข้อมูลถูกส่งออก · <a href="https://github.com/sacmaib80-cmyk/demo-sites">ซอร์สและเครดิต</a> · © 2026 Wutthichai สงวนลิขสิทธิ์</footer>
 </body>
 </html>
